@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/serraux/candi.git"
+    "url": "git+https://github.com/serraux/landingtemplate.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/serraux/candi/issues"
+    "url": "https://github.com/serraux/landingtemplate/issues"
   },
-  "homepage": "https://github.com/serraux/candi#readme",
+  "homepage": "https://github.com/serraux/landingtemplate#readme",
   "devDependencies": {
     "autoprefixer": "^10.2.5",
     "postcss": "^8.2.9",
