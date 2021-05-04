@@ -84,9 +84,47 @@ con el método send(): */
       }
       /* 7. Adicionar elementos a la sección de productos o servicios */
       function renderSectionCategory(objJson) {
+        /* Crea los elementos html */
         const nameSectionProdServ = document.createElement("h1");
+        const descSectionProdServ = document.createElement("p");
+        const titleCat1 = document.createElement("h2");
+        const descCat1 = document.createElement("p");
+        const titleCat2 = document.createElement("h2");
+        const descCat2 = document.createElement("p");
+        const titleCat3 = document.createElement("h2");
+        const descCat3 = document.createElement("p");
+        const titleCat4 = document.createElement("h2");
+        const descCat4 = document.createElement("p");
+        const titleCat5 = document.createElement("h2");
+        const descCat5 = document.createElement("p");
+
+        /* Asocia cada elemento al campo equivalente en el archivo json */
         nameSectionProdServ.textContent = objJson["nameSectionProdServ"];
+        descSectionProdServ.textContent = objJson["descriptionSectionProdServ"];
+        titleCat1.textContent = objJson["titleCategoria1"];
+        descCat1.textContent = objJson["desCategoria1"];
+        titleCat2.textContent = objJson["titleCategoria2"];
+        descCat2.textContent = objJson["desCategoria2"];
+        titleCat3.textContent = objJson["titleCategoria3"];
+        descCat3.textContent = objJson["desCategoria3"];
+        titleCat4.textContent = objJson["titleCategoria4"];
+        descCat4.textContent = objJson["desCategoria4"];
+        titleCat5.textContent = objJson["titleCategoria5"];
+        descCat5.textContent = objJson["desCategoria5"];
+
+        /* Añade cada elemento a la sección category */
         sectionCategory.appendChild(nameSectionProdServ);
+        sectionCategory.appendChild(descSectionProdServ);
+        sectionCategory.appendChild(titleCat1);
+        sectionCategory.appendChild(descCat1);
+        sectionCategory.appendChild(titleCat2);
+        sectionCategory.appendChild(descCat2);
+        sectionCategory.appendChild(titleCat3);
+        sectionCategory.appendChild(descCat3);
+        sectionCategory.appendChild(titleCat4);
+        sectionCategory.appendChild(descCat4);
+        sectionCategory.appendChild(titleCat5);
+        sectionCategory.appendChild(descCat5);
       }
     </script>
     <!--  <script src="https://raw.githubusercontent.com/serraux/landingtemplate/main/sources/code.js"></script> -->
