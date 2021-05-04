@@ -1,4 +1,4 @@
-/* 1. Se obtiene el archivo JSON con la API XMLHttpRequest */
+/* 1. Se obtiene el archivo JSON con la API XMLHttpRequest XHR */
 const requestURL =
   "https://raw.githubusercontent.com/serraux/landingtemplate/main/sources/data.json";
 
@@ -16,8 +16,12 @@ request.send();
 
 /* 5. Esperar por la respuesta a retornar desde el servidor y luego, manejarla.  */
 request.onload = function () {
-  const superHeroes = request.response;
-
-  renderHeader(superHeroes);
-  showHeroes(superHeroes);
+  const dataJson = request.response;
+  renderHeader(dataJson);
 };
+/* 6. Construir función renderHeader */
+function renderHeader(objJson) {
+  const myH1 = document.createElement("h1");
+  myH1.textContent = objJson["intro"];
+  header.appendChild(myH1);
+}

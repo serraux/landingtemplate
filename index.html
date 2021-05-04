@@ -27,17 +27,13 @@
       <!-- Sección de temas principales de la página -->
 
       <!--  sección de bienvenida -->
-      <section id="welcome">
-        <p>seccion de bienvenida</p>
-      </section>
+      <section id="welcome" class="bg-red-200 h-screen"></section>
       <!--  section productos y/o servicios -->
-      <section id="prod-serv">
-        <p>seccion de productos o servicios</p>
-      </section>
+      <section id="category" class="bg-green-200 h-screen"></section>
       <!--  section conócenos -->
-      <section id="conocenos">
-        <p>seccion de productos o servicios</p>
-      </section>
+      <section id="knowUs" class="bg-blue-200 h-screen"></section>
+      <!--  section conócenos -->
+      <section id="footer" class="bg-yellow-200 h-screen"></section>
     </main>
     <!-- Footer -->
     <footer class="bg-gray-200">
@@ -52,5 +48,47 @@
         >
       </p>
     </footer>
+    <script>
+      const header = document.querySelector("header");
+      const sectionWelcome = document.getElementById("welcome");
+      const sectionCategory = document.getElementById("category");
+      const sectionKnowUs = document.getElementById("knowUs");
+      const sectionFooter = document.getElementById("footer");
+
+      const requestURL =
+        "https://raw.githubusercontent.com/serraux/landingtemplate/main/sources/data.json";
+
+      /* 2. Crear una nueva instancia de objeto de solicitud desde el constructor XMLHttpRequest */
+      const request = new XMLHttpRequest();
+
+      /* 3. Abrir una nueva solicitud utilizando el método open(). */
+      request.open("GET", requestURL);
+
+      /* 4. Establecer el responseType a JSON, de esta forma ese XHR sabe que el servidor estará retornando JSON 
+y que esto debería ser convertido en segundo plano en un objeto JavaScript. Luego se envía la solicitud 
+con el método send(): */
+      request.responseType = "json";
+      request.send();
+
+      /* 5. Esperar por la respuesta a retornar desde el servidor y luego, manejarla.  */
+      request.onload = function () {
+        const dataJson = request.response;
+        renderSectionWelcome(dataJson);
+        renderSectionCategory(dataJson);
+      };
+      /* 6. Construir función renderHeader */
+      function renderSectionWelcome(objJson) {
+        const textIntro = document.createElement("p");
+        textIntro.textContent = objJson["intro"];
+        sectionWelcome.appendChild(textIntro);
+      }
+      /* 7. Adicionar elementos a la sección de productos o servicios */
+      function renderSectionCategory(objJson) {
+        const nameSectionProdServ = document.createElement("h1");
+        nameSectionProdServ.textContent = objJson["nameSectionProdServ"];
+        sectionCategory.appendChild(nameSectionProdServ);
+      }
+    </script>
+    <!--  <script src="https://raw.githubusercontent.com/serraux/landingtemplate/main/sources/code.js"></script> -->
   </body>
 </html>
