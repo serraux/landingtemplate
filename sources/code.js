@@ -1,6 +1,6 @@
 /* 1. Se obtiene el archivo JSON con la API XMLHttpRequest */
 const requestURL =
-  "https://raw.githubusercontent.com/serraux/Javascript/main/index.json";
+  "https://raw.githubusercontent.com/serraux/landingtemplate/main/sources/data.json";
 
 /* 2. Crear una nueva instancia de objeto de solicitud desde el constructor XMLHttpRequest */
 const request = new XMLHttpRequest();
