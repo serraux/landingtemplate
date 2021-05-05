@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./img/favicon-32x32.ico"
+    />
+
+    <title>Landing template</title>
+  </head>
+  <body>
+    <!-- Encabezado -->
+    <main class="relative">
+      <header class="flex pt-4">
+        <img class="bg-gray-500" src="./img/logo.png" alt="logo empresa" />
+        <h1 class="bg-gray-500 text-lg text-center flex-grow">
+          Nombre del negocio
+        </h1>
+      </header>
+      <!-- Sección de temas principales de la página -->
+
+      <!--  sección de bienvenida -->
+      <section id="welcome" class="bg-gray-200 h-screen">
+        <p id="intro"></p>
+      </section>
+      <!--  section productos y/o servicios -->
+      <section id="category" class="bg-gray-200 grid">
+        <h1
+          id="nameCategory"
+          class="bg-gray-700 text-gray-200 p-6 text-center text-2xl"
+        ></h1>
+        <p id="descriptionCategory" class="bg-gray-100 p-4"></p>
+        <div id="detailCategory"></div>
+      </section>
+      <!--  section conócenos -->
+      <section id="knowUs" class="bg-gray-200 h-screen"></section>
+      <!--  section conócenos -->
+      <section id="footer" class="bg-gray-200 h-screen"></section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-gray-200">
+      <p class="text-center font-sans">
+        Made <span class="text-yellow-600"> ♥</span> &infin;
+        <a
+          target="_blank"
+          class="text-yellow-600"
+          href="https://www.senses5.co"
+        >
+          senses5</a
+        >
+      </p>
+    </footer>
+    <script>
+      const header = document.querySelector("header");
+      const sectionWelcome = document.getElementById("welcome");
+      const intro = document.getElementById("intro");
+      const sectionCategory = document.getElementById("category");
+      const nameCategory = document.getElementById("nameCategory");
+      const descriptionCategory = document.getElementById(
+        "descriptionCategory"
+      );
+      const detailCategory = document.getElementById("detailCategory");
+      const sectionKnowUs = document.getElementById("knowUs");
+      const sectionFooter = document.getElementById("footer");
+
+      const requestURL =
+        "https://raw.githubusercontent.com/serraux/landingtemplate/main/sources/data.json";
+
+      /* 2. Crear una nueva instancia de objeto de solicitud desde el constructor XMLHttpRequest */
+      const request = new XMLHttpRequest();
+
+      /* 3. Abrir una nueva solicitud utilizando el método open(). */
+      request.open("GET", requestURL);
+
+      /* 4. Establecer el responseType a JSON, de esta forma ese XHR sabe que el servidor estará retornando JSON 
+y que esto debería ser convertido en segundo plano en un objeto JavaScript. Luego se envía la solicitud 
+con el método send(): */
+      request.responseType = "json";
+      request.send();
+
+      /* 5. Esperar por la respuesta a retornar desde el servidor y luego, manejarla.  */
+      request.onload = function () {
+        const dataJson = request.response;
+        renderSectionWelcome(dataJson);
+        renderSectionCategory(dataJson);
+      };
+      /* 6. Construir función renderHeader */
+      function renderSectionWelcome(objJson) {
+        intro.textContent = objJson["intro"];
+      }
+      /* 7. Adicionar elementos a la sección de productos o servicios */
+      function renderSectionCategory(objJson) {
+        /* Crea los elementos html  */
+
+        const divCategory = document.createElement("div");
+        const titleCat1 = document.createElement("h2");
+        const descCat1 = document.createElement("p");
+        const titleCat2 = document.createElement("h2");
+        const descCat2 = document.createElement("p");
+        const titleCat3 = document.createElement("h2");
+        const descCat3 = document.createElement("p");
+        const titleCat4 = document.createElement("h2");
+        const descCat4 = document.createElement("p");
+        const titleCat5 = document.createElement("h2");
+        const descCat5 = document.createElement("p");
+        const imagen1 = document.createElement("img");
+        imagen1.setAttribute("src", "./img/prodserv1.jpg");
+        const imagen2 = document.createElement("img");
+        imagen2.setAttribute("src", "./img/prodserv2.jpg");
+        const imagen3 = document.createElement("img");
+        imagen3.setAttribute("src", "./img/prodserv3.jpg");
+        const imagen4 = document.createElement("img");
+        imagen4.setAttribute("src", "./img/prodserv4.jpg");
+        const imagen5 = document.createElement("img");
+        imagen5.setAttribute("src", "./img/prodserv5.jpg");
+
+        /* Asocia cada elemento al campo equivalente en el archivo json */
+
+        nameCategory.textContent = objJson["nameSectionProdServ"];
+        descriptionCategory.textContent = objJson["descriptionSectionProdServ"];
+
+        titleCat1.textContent = objJson["titleCategoria1"];
+        descCat1.textContent = objJson["desCategoria1"];
+        titleCat2.textContent = objJson["titleCategoria2"];
+        descCat2.textContent = objJson["desCategoria2"];
+        titleCat3.textContent = objJson["titleCategoria3"];
+        descCat3.textContent = objJson["desCategoria3"];
+        titleCat4.textContent = objJson["titleCategoria4"];
+        descCat4.textContent = objJson["desCategoria4"];
+        titleCat5.textContent = objJson["titleCategoria5"];
+        descCat5.textContent = objJson["desCategoria5"];
+
+        /* Añade cada elemento a la sección category */
+
+        divCategory.appendChild(titleCat1);
+        divCategory.appendChild(imagen1);
+        divCategory.appendChild(descCat1);
+        divCategory.appendChild(titleCat2);
+        divCategory.appendChild(imagen2);
+        divCategory.appendChild(descCat2);
+        divCategory.appendChild(titleCat3);
+        divCategory.appendChild(imagen3);
+        divCategory.appendChild(descCat3);
+        divCategory.appendChild(titleCat4);
+        divCategory.appendChild(imagen4);
+        divCategory.appendChild(descCat4);
+        divCategory.appendChild(titleCat5);
+        divCategory.appendChild(imagen5);
+        divCategory.appendChild(descCat5);
+        sectionCategory.appendChild(divCategory);
+      }
+    </script>
+    <!--  <script src="https://raw.githubusercontent.com/serraux/landingtemplate/main/sources/code.js"></script> -->
+  </body>
+</html>
